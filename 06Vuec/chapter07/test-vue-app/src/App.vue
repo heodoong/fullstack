@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>App 컴포넌트</h2>
+    <h2>App component</h2>
     <hr />
     <Checkboxitem></Checkboxitem>
   </div>
