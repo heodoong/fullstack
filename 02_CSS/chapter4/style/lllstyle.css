@@ -1,0 +1,8 @@
+body {
+  background-image: url(/01_WEB/01_HTML/chapter03/data/BackgroundFront.png),
+    url(/01_WEB/01_HTML/chapter03/data/BackgroundBack.png);
+  background-size: 100%, 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0px 50%;
+}

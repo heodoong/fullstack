@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        :style="style1"
+        v-on:mouseover="changeColor"
+        v-on:mouseleave="resetColor"
+      ></button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: "app",
+        data() {
+          return {
+            style1: {
+              backgroundColor: "aqua",
+              color: "black",
+            },
+          };
+        },
+        methods: {
+          changeColor() {
+            this.style1.backgroundColor = "navy";
+            this.style1.color = "wheat";
+          },
+          resetColor() {
+            this.style1.backgroundColor = "red";
+            this.style1.color = "white";
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

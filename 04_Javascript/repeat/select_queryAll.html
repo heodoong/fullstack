@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let headers = document.querySelectorAll("h1");
+        // console.log(header);
+        for (let i = 0; i < headers.length; i++) {
+          let header = headers[i];
+          header.style.backgroundColor = "Navy";
+          header.style.color = "wheat";
+          header.innerHTML = "From JavaScript";
+        }
+
+        let headers1 = document.getElementById("header");
+
+        headers1.style.color = "red";
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Header 1</h1>
+    <h1>Header 2</h1>
+    <h1>Header 3</h1>
+  </body>
+</html>
