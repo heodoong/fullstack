@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>저녁 메뉴 룰렛</title>
+    <style>
+      #roulette {
+        width: 300px;
+        height: 300px;
+        border: 2px solid #000;
+        border-radius: 50%;
+        position: relative;
+        margin: 50px auto;
+        overflow: hidden;
+      }
+      .segment {
+        width: 50%;
+        height: 50%;
+        background-color: lightblue;
+        position: absolute;
+        left: 50%;
+        transform-origin: left bottom;
+        clip-path: polygon(0 100%, 100% 100%, 100% 0);
+      }
+      .segment:nth-child(odd) {
+        background-color: lightcoral;
+      }
+      #spinButton {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      .needle {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 20px solid red;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      #selectedMenu {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="roulette">
+      <div class="needle"></div>
+    </div>
+    <button id="spinButton">Spin!</button>
+    <div id="selectedMenu">메뉴</div>
+
+    <script>
+      const menus = [
+        "치킨",
+        "피자",
+        "초밥",
+        "햄버거",
+        "라면",
+        "일식돈까스",
+        "떡볶이",
+        "김밥",
+        "쌀국수",
+        "칼국수",
+        "불닭",
+        "제육덮밥",
+      ];
+      const segmentAngle = 360 / menus.length;
+
+      const roulette = document.getElementById("roulette");
+
+      menus.forEach((menu, index) => {
+        const segment = document.createElement("div");
+        segment.className = "segment";
+        segment.style.transform = `rotate(${index * segmentAngle}deg)`;
+        segment.innerText = menu;
+        segment.style.textAlign = "right";
+        segment.style.paddingRight = "10px";
+        segment.style.fontSize = "14px";
+        roulette.appendChild(segment);
+      });
+
+      const spinButton = document.getElementById("spinButton");
+      const selectedMenuDiv = document.getElementById("selectedMenu");
+
+      spinButton.addEventListener("click", () => {
+        const randomDegree = Math.floor(Math.random() * 360 + 3600);
+        roulette.style.transition = "transform 5s ease-out";
+        roulette.style.transform = `rotate(${randomDegree}deg)`;
+
+        setTimeout(() => {
+          const selectedIndex =
+            Math.floor((randomDegree % 360) / segmentAngle) % menus.length;
+          selectedMenuDiv.innerText = `선택된 메뉴: ${menus[selectedIndex]}`;
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>
